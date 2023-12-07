@@ -1,14 +1,21 @@
-import Head from 'next/head';
-import React from 'react';
+import { Metadata } from 'next';
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: 'nextjs memoapp',
+  icons: {
+    icon: [
+      {
+        url: '/logo.svg',
+        href: '/favicon.ico',
+      },
+    ],
+  },
+};
+
+export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <html lang="ko">
-      <Head>
-        <title>nextjs memoapp</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <body>{children}</body>
+      <body>{props.children}</body>
     </html>
   );
 }
