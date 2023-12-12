@@ -17,6 +17,7 @@ export const Navigation = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   const isResizingRef = useRef(false);
+
   const sidebarRef = useRef<ElementRef<'aside'>>(null);
   const navbarRef = useRef<ElementRef<'div'>>(null);
 
@@ -28,12 +29,14 @@ export const Navigation = () => {
     event.stopPropagation();
 
     isResizingRef.current = true;
+
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
   };
 
   const handleMouseMove = (event: MouseEvent) => {
     if (!isResizingRef.current) return;
+
     let newWidth = event.clientX;
 
     if (newWidth < 240) newWidth = 240;

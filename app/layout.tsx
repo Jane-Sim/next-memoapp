@@ -1,5 +1,10 @@
 import { Metadata } from 'next';
 
+import React from 'react';
+import RecoilRootWrapper from '@/app/_components/wrappers/RecoilRootWrapper';
+import StyledComponentsRegistry from '@/app/_components/wrappers/registry';
+import GlobalStyle from '@/styles/globalStyle';
+
 export const metadata: Metadata = {
   title: 'nextjs memoapp',
   icons: {
@@ -15,7 +20,14 @@ export const metadata: Metadata = {
 export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <html lang="ko">
-      <body>{props.children}</body>
+      <body>
+        <RecoilRootWrapper>
+          <StyledComponentsRegistry>
+            <GlobalStyle />
+            {props.children}
+          </StyledComponentsRegistry>
+        </RecoilRootWrapper>
+      </body>
     </html>
   );
 }
